@@ -1,6 +1,6 @@
 /* ============================================================
    极简 ADB 工具箱 · 交互脚本
-   下载链接集中在这里配置：当前指向 GitHub Releases v1.2.0
+   下载链接集中在这里配置：当前指向 GitHub Releases v1.2.1
    的 Windows 安装包；如需更换版本，修改下方 CONFIG 即可。
    ============================================================ */
 (function () {
@@ -11,7 +11,7 @@
     repo: 'ADB-Toolbox-Source',
     branch: 'main',
     downloadDir: 'downloads',
-    // Windows 版安装包托管在 GitHub Releases v1.2.0
+    // Windows 版安装包托管在 GitHub Releases v1.2.1
     useReleases: true
   };
 
