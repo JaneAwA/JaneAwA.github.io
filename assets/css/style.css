@@ -37,6 +37,25 @@ button, select { font-family: var(--font); font-size: 12px; }
   border-color: var(--white) var(--dark) var(--dark) var(--white);
   box-shadow: inset -1px -1px 0 var(--shadow), inset 1px 1px 0 var(--face-light), 4px 4px 0 rgba(0,0,0,0.35);
 }
+/* 标题栏 + 菜单栏整体固定在窗口顶部 */
+.window-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--face);
+}
+.window-header::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 4px;
+  pointer-events: none;
+  background: linear-gradient(rgba(0,0,0,0.28), transparent);
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+.window-header.is-stuck::after { opacity: 1; }
+
 .title-bar {
   height: 26px;
   display: flex;
