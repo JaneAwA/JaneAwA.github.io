@@ -2,228 +2,110 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f0f0f0">
-  <meta name="description" content="极简 ADB 工具箱 v1.2.0 —— 把复杂的 Android 调试装进一个熟悉的窗口。免费、开源、免配置，提供 Windows 版下载。">
-  <meta property="og:title" content="极简 ADB 工具箱">
-  <meta property="og:description" content="把复杂的 Android 调试装进一个熟悉的窗口。免费、开源、免配置。">
-  <meta property="og:type" content="website">
-  <title>极简 ADB 工具箱 v1.2.0 — 官方下载</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#008080">
+  <meta name="description" content="极简 ADB 工具箱 v1.2.0 官方网站。免费、开源、免配置，提供 Windows 版下载与国内镜像加速。">
+  <title>极简 ADB 工具箱 v1.2.0</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%23f0f0f0' stroke='%237a7a7a' stroke-width='3'/%3E%3Cpath d='M14 43V21h7v22h-7Zm13 0V14h7v29h-7Zm13 0V28h7v15h-7Z' fill='%230a246a'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c0c0c0' stroke='%23000'/%3E%3Cpath d='M8 23V9h3v14H8Zm6 0V6h3v17h-3Zm6 0v-8h3v8h-3Z' fill='%23000080'/%3E%3C/svg%3E">
 </head>
 <body>
-  <!-- 淡入的背景光晕：保留轻微视差 -->
-  <div class="ambient" aria-hidden="true">
-    <span class="blob blob-a" data-depth="0.10"></span>
-    <span class="blob blob-b" data-depth="0.07"></span>
-    <span class="blob blob-c" data-depth="0.13"></span>
-  </div>
-
-  <!-- 顶部：模拟软件窗口标题栏 + 菜单栏 -->
-  <header class="topbar" id="topbar">
-    <div class="window-shell">
+  <div class="desktop">
+    <div class="window" id="topbar">
       <div class="title-bar">
-        <span class="app-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3v10H5Zm5.5 0V4.5h3V17h-3ZM16 17v-6h3v6h-3Z" fill="currentColor"/></svg>
-        </span>
-        <span class="title-text">极简ADB工具箱 <em>v1.2.0</em></span>
-        <span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span>
+        <span class="title-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3v10H5Zm5.5 0V4.5h3V17h-3ZM16 17v-6h3v6h-3Z" fill="currentColor"/></svg></span>
+        <span class="title-text">极简 ADB 工具箱 v1.2.0 — 官方网站</span>
+        <span class="title-controls" aria-hidden="true"><button type="button" tabindex="-1">_</button><button type="button" tabindex="-1">□</button><button type="button" tabindex="-1">×</button></span>
       </div>
-      <div class="menu-bar">
-        <nav aria-label="主导航">
-          <a href="#home" class="active">概览</a>
-          <a href="#features">功能</a>
-          <a href="#workflow">界面</a>
-          <a href="#download">下载</a>
-        </nav>
-        <span class="menu-status">Windows 版 · 已就绪</span>
+
+      <div class="menu-bar nav-links">
+        <a href="#home" class="active"><u>概</u>览</a>
+        <a href="#features"><u>功</u>能</a>
+        <a href="#workflow"><u>界</u>面</a>
+        <a href="#download"><u>下</u>载</a>
+        <span class="menu-right">Windows 版</span>
+      </div>
+
+      <div class="window-content">
+        <section class="group" id="home">
+          <legend>关于工具箱</legend>
+          <div class="hero-grid">
+            <div class="intro">
+              <h1>极简 ADB 工具箱</h1>
+              <p class="lead">把复杂的 ADB 操作，放进一个熟悉的窗口。</p>
+              <p>重启菜单、命令行、Sideload 刷机、推送文件、安装通用驱动……常用功能按分类摆好，点一下就执行。免费、开源、无需配置环境变量。</p>
+              <div class="btn-row">
+                <a class="btn default" href="#download">立即下载</a>
+                <a class="btn" href="#features">查看功能</a>
+              </div>
+              <ul class="bullets">
+                <li>内置 ADB 环境与通用驱动安装入口</li>
+                <li>分组清晰，打开即可找到需要的操作</li>
+                <li>当前版本 v1.2.0 · 仅 Windows 版</li>
+              </ul>
+            </div>
+            <div class="preview">
+              <img src="assets/img/app-screenshot.png" alt="极简 ADB 工具箱软件主界面截图：通用分类、系统模式、恢复模式、Fastboot 模式等按钮分组">
+              <div class="caption">图 1：软件主界面</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="group" id="features">
+          <legend>功能一览</legend>
+          <div class="feature-grid">
+            <div class="feature"><b>通用分类</b><span>重启菜单、命令行</span></div>
+            <div class="feature"><b>系统模式</b><span>设备信息、安装/卸载软件、推送文件</span></div>
+            <div class="feature"><b>恢复模式</b><span>Sideload 刷机、推送文件</span></div>
+            <div class="feature"><b>Fastboot/d 模式</b><span>刷入镜像、读取信息</span></div>
+            <div class="feature"><b>其他</b><span>官方网站、关于工具箱、安装通用驱动</span></div>
+            <div class="feature"><b>设备列表</b><span>MIX 2S、faa72261 等快捷入口</span></div>
+          </div>
+        </section>
+
+        <section class="group" id="workflow">
+          <legend>使用步骤</legend>
+          <ol class="steps">
+            <li><b>连接设备</b><span>插上数据线，在系统模式查看已连接设备信息。</span></li>
+            <li><b>选择分组</b><span>按通用、恢复、Fastboot 等分类找到对应功能。</span></li>
+            <li><b>点击按钮</b><span>命令自动执行，无需手写 ADB 指令。</span></li>
+          </ol>
+        </section>
+
+        <section class="group" id="download">
+          <legend>下载 v1.2.0</legend>
+          <div class="download-grid">
+            <div class="download-info">
+              <p class="version">最新版本 v1.2.0</p>
+              <p>极简 ADB 工具箱 · Windows 版，压缩包 27.6 MB。下载后解压运行即可使用。</p>
+              <p class="hint">文件托管在 GitHub，可选择国内镜像加速，也可切回官方原链接。</p>
+            </div>
+            <div class="download-actions">
+              <div class="route-row">
+                <label for="mirrorSelect">下载线路</label>
+                <span class="select-wrap">
+                  <select id="mirrorSelect">
+                    <option value="https://ghfast.top/" selected>国内镜像 · ghfast.top</option>
+                    <option value="https://gh-proxy.com/">国内镜像 · gh-proxy.com</option>
+                    <option value="">GitHub 原链接（官方）</option>
+                  </select>
+                </span>
+                <small id="sourceStatus">当前：国内镜像 ghfast.top</small>
+              </div>
+              <a class="btn default big" data-file="ADB-Toolbox-Windows-v1.2.0.rar" href="#" download>下载 Windows 版（.rar · 27.6 MB）</a>
+              <a class="btn" href="https://github.com/JaneAwA/JaneAwA.github.io/releases" target="_blank" rel="noopener">查看更新记录</a>
+              <p class="note">镜像站为第三方中转，下载异常时请切换回 GitHub 原链接。</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="status-bar">
+          <span>就绪</span>
+          <span class="status-cmd">$ <span id="typed">adb devices</span><i class="caret"></i></span>
+        </div>
       </div>
     </div>
-  </header>
-
-  <main class="desktop">
-    <!-- 首屏 -->
-    <section class="hero" id="home">
-      <div class="hero-inner">
-        <fieldset class="group-box hero-copy reveal">
-          <legend>关于工具箱</legend>
-          <div class="hero-badge">免费 · 开源 · 免配置</div>
-          <h1>把复杂的 ADB<br>装进简单窗口</h1>
-          <p class="hero-desc">重启菜单、命令行、Sideload 刷机、推送文件、安装通用驱动……常用功能按分类摆好，点一下就执行。</p>
-          <div class="hero-actions">
-            <a class="win-btn primary" href="#download">立即下载 v1.2.0</a>
-            <a class="win-btn" href="#features">查看功能</a>
-          </div>
-          <ul class="check-list">
-            <li>无需配置 ADB 环境变量</li>
-            <li>内置通用驱动安装入口</li>
-            <li>界面熟悉，打开就会用</li>
-          </ul>
-        </fieldset>
-
-        <div class="hero-visual reveal" data-parallax="0.08">
-          <div class="app-window" id="appWindow">
-            <div class="title-bar">
-              <span class="app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3v10H5Zm5.5 0V4.5h3V17h-3ZM16 17v-6h3v6h-3Z" fill="currentColor"/></svg></span>
-              <span class="title-text">极简ADB工具箱</span>
-              <span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span>
-            </div>
-            <div class="app-body">
-              <div class="groups-grid">
-                <fieldset class="group-box mini"><legend>通用分类</legend>
-                  <button type="button" class="win-btn">重启菜单</button>
-                  <button type="button" class="win-btn">命令行</button>
-                </fieldset>
-                <fieldset class="group-box mini"><legend>系统模式</legend>
-                  <button type="button" class="win-btn">已连接设备信息</button>
-                  <button type="button" class="win-btn">安装/卸载软件</button>
-                  <button type="button" class="win-btn">推送文件</button>
-                </fieldset>
-                <fieldset class="group-box mini"><legend>恢复模式</legend>
-                  <button type="button" class="win-btn">Sideload刷机</button>
-                  <button type="button" class="win-btn">推送文件</button>
-                </fieldset>
-                <fieldset class="group-box mini"><legend>Fastboot/d模式</legend>
-                  <button type="button" class="win-btn">刷入镜像</button>
-                  <button type="button" class="win-btn">读取信息</button>
-                </fieldset>
-                <fieldset class="group-box mini"><legend>其他</legend>
-                  <button type="button" class="win-btn">官方网站</button>
-                  <button type="button" class="win-btn">关于工具箱</button>
-                  <button type="button" class="win-btn">安装通用驱动</button>
-                </fieldset>
-                <fieldset class="group-box mini"><legend>已识别设备</legend>
-                  <button type="button" class="win-btn">MIX 2S</button>
-                  <button type="button" class="win-btn">faa72261</button>
-                </fieldset>
-              </div>
-            </div>
-            <div class="status-bar"><span>就绪</span><span class="status-cmd"><i class="prompt">$</i> <span id="typed">adb devices</span><i class="caret"></i></span></div>
-          </div>
-          <div class="float-chip" data-depth="0.18"><span class="chip-dot"></span> 窗口风格与软件一致</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 数据条 -->
-    <section class="stats-wrap reveal">
-      <fieldset class="group-box stats">
-        <legend>工具箱概览</legend>
-        <div class="stat"><strong>30+</strong><small>常用功能一键执行</small></div>
-        <div class="stat"><strong>6</strong><small>功能分组清晰归类</small></div>
-        <div class="stat"><strong>1</strong><small>Windows 版现已推出</small></div>
-        <div class="stat"><strong>v1.2</strong><small>当前版本</small></div>
-      </fieldset>
-    </section>
-
-    <!-- 功能 -->
-    <section class="section" id="features">
-      <div class="section-head reveal">
-        <span class="section-kicker">FEATURES / 功能</span>
-        <h2>和软件里一样，按分类找就行</h2>
-        <p>没有隐藏入口，没有学习成本。每个按钮对应一个常用操作。</p>
-      </div>
-      <div class="feature-grid">
-        <fieldset class="group-box feature-card reveal"><legend>通用分类</legend>
-          <div class="win-btn flat">重启菜单</div>
-          <div class="win-btn flat">命令行</div>
-          <p class="feature-note">进 Recovery / Fastboot 不用再记组合键。</p>
-        </fieldset>
-        <fieldset class="group-box feature-card reveal"><legend>系统模式</legend>
-          <div class="win-btn flat">已连接设备信息</div>
-          <div class="win-btn flat">安装/卸载软件</div>
-          <div class="win-btn flat">推送文件</div>
-          <p class="feature-note">连接状态、应用管理、文件传输都在这里。</p>
-        </fieldset>
-        <fieldset class="group-box feature-card reveal"><legend>恢复模式</legend>
-          <div class="win-btn flat">Sideload刷机</div>
-          <div class="win-btn flat">推送文件</div>
-          <p class="feature-note">卡刷与临时传输，按步骤点选即可。</p>
-        </fieldset>
-        <fieldset class="group-box feature-card reveal"><legend>Fastboot/d模式</legend>
-          <div class="win-btn flat">刷入镜像</div>
-          <div class="win-btn flat">读取信息</div>
-          <p class="feature-note">刷写镜像、读取设备状态，一步到位。</p>
-        </fieldset>
-        <fieldset class="group-box feature-card reveal"><legend>其他</legend>
-          <div class="win-btn flat">官方网站</div>
-          <div class="win-btn flat">关于工具箱</div>
-          <div class="win-btn flat">安装通用驱动</div>
-          <p class="feature-note">驱动、说明与官网入口集中摆放。</p>
-        </fieldset>
-        <fieldset class="group-box feature-card reveal"><legend>设备列表</legend>
-          <div class="win-btn flat">MIX 2S</div>
-          <div class="win-btn flat">faa72261</div>
-          <p class="feature-note">常见机型快捷入口，连接后自动识别。</p>
-        </fieldset>
-      </div>
-    </section>
-
-    <!-- 界面预览 -->
-    <section class="section showcase-section" id="workflow">
-      <fieldset class="group-box showcase reveal">
-        <legend>界面预览</legend>
-        <div class="showcase-copy">
-          <span class="section-kicker">SCREENSHOT / 真实界面</span>
-          <h2>就是这个窗口，<br>和你想的一样简单</h2>
-          <p>网站现在与软件保持一致：分组框、灰色按钮、经典标题栏。打开软件后，你会立刻认出每一个入口。</p>
-          <ol class="steps">
-            <li><span>1</span><div><b>连接设备</b><small>插上数据线，或在系统模式查看设备信息</small></div></li>
-            <li><span>2</span><div><b>选择分组</b><small>通用、恢复、Fastboot 等功能分类清晰</small></div></li>
-            <li><span>3</span><div><b>点击按钮</b><small>命令自动执行，无需手写 ADB 指令</small></div></li>
-          </ol>
-        </div>
-        <div class="showcase-visual" data-parallax="0.06">
-          <div class="screenshot-frame">
-            <div class="title-bar"><span class="title-text">极简ADB工具箱 — 界面截图</span><span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span></div>
-            <img src="assets/img/app-screenshot.png" alt="极简 ADB 工具箱软件界面截图，展示通用分类、系统模式、恢复模式、Fastboot 模式等按钮分组" loading="lazy">
-          </div>
-        </div>
-      </fieldset>
-    </section>
-
-    <!-- 下载 -->
-    <section class="section download-section" id="download">
-      <div class="section-head reveal">
-        <span class="section-kicker">DOWNLOAD / 下载</span>
-        <h2>下载 Windows 版</h2>
-        <p>文件托管在 GitHub，可选国内镜像加速，也可以切回官方原链接。</p>
-      </div>
-      <fieldset class="group-box download-card reveal">
-        <legend>下载 v1.2.0</legend>
-        <div class="download-info">
-          <span class="version-pill">最新版本 v1.2.0</span>
-          <h3>极简 ADB 工具箱 · Windows 版</h3>
-          <p>压缩包 27.6 MB，内置 ADB 环境与通用驱动安装入口。下载后解压运行即可使用。</p>
-          <div class="download-note">免费 · 无广告 · 无捆绑</div>
-        </div>
-        <div class="download-options">
-          <div class="source-picker">
-            <span class="source-label">下载线路</span>
-            <span class="select-wrap">
-              <select id="mirrorSelect" aria-label="选择下载线路">
-                <option value="https://ghfast.top/" selected>国内镜像 · ghfast.top</option>
-                <option value="https://gh-proxy.com/">国内镜像 · gh-proxy.com</option>
-                <option value="">GitHub 原链接（官方）</option>
-              </select>
-              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <small id="sourceStatus">当前：国内镜像 ghfast.top</small>
-          </div>
-          <a class="win-btn primary big" data-file="ADB-Toolbox-Windows-v1.2.0.rar" href="#" download>下载 Windows 版（.rar · 27.6 MB）</a>
-          <a class="win-btn" href="https://github.com/JaneAwA/JaneAwA.github.io/releases" target="_blank" rel="noopener">查看 GitHub Releases 更新记录</a>
-          <p class="download-hint">镜像站为第三方中转，下载异常时请切换回 GitHub 原链接。</p>
-        </div>
-      </fieldset>
-    </section>
-  </main>
-
-  <footer class="status-footer">
-    <span>就绪</span>
-    <span>极简 ADB 工具箱 · Windows 版 v1.2.0</span>
-    <a href="https://github.com/JaneAwA" target="_blank" rel="noopener">GitHub: JaneAwA</a>
-  </footer>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="assets/js/main.js"></script>
