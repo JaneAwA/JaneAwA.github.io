@@ -124,6 +124,12 @@
 
     if (topbar) topbar.classList.toggle('scrolled', y > 24);
 
+    const header = $('.window-header');
+    if (header) {
+      // sticky 生效（贴到视口顶部）时才显示底部分隔阴影
+      header.classList.toggle('is-stuck', header.getBoundingClientRect().top <= 1);
+    }
+
     if (!REDUCED) {
       depthEls.forEach((el) => {
         const depth = parseFloat(el.dataset.depth) || 0.1;
