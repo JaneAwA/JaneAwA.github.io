@@ -1,7 +1,7 @@
 /* ============================================================
    极简 ADB 工具箱 · 交互脚本
-   下载链接集中在这里配置：只要把安装包放进仓库 downloads/
-   并保持下面的文件名一致，按钮就会自动生效。
+   下载链接集中在这里配置：当前指向 GitHub Releases v1.2.0
+   的 Windows 安装包；如需更换版本，修改下方 CONFIG 即可。
    ============================================================ */
 (function () {
   'use strict';
@@ -11,8 +11,8 @@
     repo: 'JaneAwA.github.io',
     branch: 'main',
     downloadDir: 'downloads',
-    // 若以后改用 GitHub Releases，把 useReleases 改为 true 即可
-    useReleases: false
+    // Windows 版安装包托管在 GitHub Releases v1.2.0
+    useReleases: true
   };
 
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
