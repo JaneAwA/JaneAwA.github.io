@@ -8,7 +8,7 @@
 
   const CONFIG = {
     owner: 'JaneAwA',
-    repo: 'JaneAwA.github.io',
+    repo: 'ADB-Toolbox-Source',
     branch: 'main',
     downloadDir: 'downloads',
     // Windows 版安装包托管在 GitHub Releases v1.2.0
