@@ -159,7 +159,7 @@
         const r = heroVisual.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        appWindow.style.transform = `rotateY(${(px * 7).toFixed(2)}deg) rotateX(${(-py * 6).toFixed(2)}deg) translateZ(18px)`;
+        appWindow.style.transform = `translate3d(${(px * 8).toFixed(1)}px, ${(py * 6).toFixed(1)}px, 0)`;
         $$('.float-chip', heroVisual).forEach((chip, i) => {
           const d = (i === 0 ? 16 : -14);
           chip.style.marginLeft = `${(px * d).toFixed(1)}px`;

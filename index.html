@@ -3,216 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f5f5f7">
-  <meta name="description" content="极简 ADB 工具箱 v1.2.0 —— 把复杂的 Android 调试变成一次点击。轻量、免费、开源，现已提供 Windows 版下载。">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="description" content="极简 ADB 工具箱 v1.2.0 —— 把复杂的 Android 调试装进一个熟悉的窗口。免费、开源、免配置，提供 Windows 版下载。">
   <meta property="og:title" content="极简 ADB 工具箱">
-  <meta property="og:description" content="把复杂的 Android 调试变成一次点击。轻量、免费、开源。">
+  <meta property="og:description" content="把复杂的 Android 调试装进一个熟悉的窗口。免费、开源、免配置。">
   <meta property="og:type" content="website">
-  <title>极简 ADB 工具箱 — 让 Android 调试回到简单</title>
+  <title>极简 ADB 工具箱 v1.2.0 — 官方下载</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230A84FF'/%3E%3Cstop offset='1' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M17 39V25h6v14h-6Zm12 0V18h6v21h-6Zm12 0V29h6v10h-6Z' fill='white'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%23f0f0f0' stroke='%237a7a7a' stroke-width='3'/%3E%3Cpath d='M14 43V21h7v22h-7Zm13 0V14h7v29h-7Zm13 0V28h7v15h-7Z' fill='%230a246a'/%3E%3C/svg%3E">
 </head>
 <body>
-  <!-- 环境光晕：视差层 -->
+  <!-- 淡入的背景光晕：保留轻微视差 -->
   <div class="ambient" aria-hidden="true">
-    <span class="blob blob-blue" data-depth="0.18"></span>
-    <span class="blob blob-purple" data-depth="0.12"></span>
-    <span class="blob blob-mint" data-depth="0.24"></span>
-    <span class="blob blob-pink" data-depth="0.09"></span>
+    <span class="blob blob-a" data-depth="0.10"></span>
+    <span class="blob blob-b" data-depth="0.07"></span>
+    <span class="blob blob-c" data-depth="0.13"></span>
   </div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <!-- 顶部玻璃导航栏 -->
+  <!-- 顶部：模拟软件窗口标题栏 + 菜单栏 -->
   <header class="topbar" id="topbar">
-    <nav class="nav glass" aria-label="主导航">
-      <a class="brand" href="#home" aria-label="极简 ADB 工具箱首页">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3.2v10H5Zm5.4 0V4.5h3.2V17h-3.2ZM16 17v-6h3.2v6H16Z" fill="currentColor"/></svg>
+    <div class="window-shell">
+      <div class="title-bar">
+        <span class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3v10H5Zm5.5 0V4.5h3V17h-3ZM16 17v-6h3v6h-3Z" fill="currentColor"/></svg>
         </span>
-        <span class="brand-name">极简 ADB<span class="brand-dot">.</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="#home" class="active">概览</a>
-        <a href="#features">功能</a>
-        <a href="#workflow">体验</a>
-        <a href="#download">下载</a>
+        <span class="title-text">极简ADB工具箱 <em>v1.2.0</em></span>
+        <span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span>
       </div>
-      <div class="nav-actions">
-        <a class="icon-btn glass" href="https://github.com/JaneAwA" target="_blank" rel="noopener" aria-label="访问 GitHub 主页">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-        </a>
-        <a class="btn btn-small" href="#download">获取工具</a>
+      <div class="menu-bar">
+        <nav aria-label="主导航">
+          <a href="#home" class="active">概览</a>
+          <a href="#features">功能</a>
+          <a href="#workflow">界面</a>
+          <a href="#download">下载</a>
+        </nav>
+        <span class="menu-status">Windows 版 · 已就绪</span>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="desktop">
     <!-- 首屏 -->
     <section class="hero" id="home">
       <div class="hero-inner">
-        <div class="hero-copy reveal">
-          <div class="eyebrow"><span class="pulse"></span> 为 Android 调试而生 · 完全免费</div>
-          <h1>把复杂留给代码<br><span class="gradient-text">把简单留给你</span></h1>
-          <p class="hero-desc">极简 ADB 工具箱，把常用的 ADB 命令装进一个清爽的界面。连接设备、安装应用、抓取日志、传输文件——都不必再翻文档。</p>
+        <fieldset class="group-box hero-copy reveal">
+          <legend>关于工具箱</legend>
+          <div class="hero-badge">免费 · 开源 · 免配置</div>
+          <h1>把复杂的 ADB<br>装进简单窗口</h1>
+          <p class="hero-desc">重启菜单、命令行、Sideload 刷机、推送文件、安装通用驱动……常用功能按分类摆好，点一下就执行。</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#download">
-              立即下载
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="btn btn-glass" href="#features">看看它能做什么</a>
+            <a class="win-btn primary" href="#download">立即下载 v1.2.0</a>
+            <a class="win-btn" href="#features">查看功能</a>
           </div>
-          <div class="hero-meta">
-            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 无需配置环境变量</span>
-            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 开箱即用</span>
-            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 开源透明</span>
-          </div>
-        </div>
+          <ul class="check-list">
+            <li>无需配置 ADB 环境变量</li>
+            <li>内置通用驱动安装入口</li>
+            <li>界面熟悉，打开就会用</li>
+          </ul>
+        </fieldset>
 
-        <div class="hero-visual reveal" data-parallax="0.12">
-          <div class="app-window glass" id="appWindow">
-            <div class="window-bar">
-              <span class="traffic lights"><i></i><i></i><i></i></span>
-              <span class="window-title">极简 ADB · 设备面板</span>
-              <span class="window-badge">已连接</span>
+        <div class="hero-visual reveal" data-parallax="0.08">
+          <div class="app-window" id="appWindow">
+            <div class="title-bar">
+              <span class="app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3v10H5Zm5.5 0V4.5h3V17h-3ZM16 17v-6h3v6h-3Z" fill="currentColor"/></svg></span>
+              <span class="title-text">极简ADB工具箱</span>
+              <span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span>
             </div>
-            <div class="window-body">
-              <div class="device-row">
-                <span class="device-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                </span>
-                <span class="device-info"><strong>Pixel 9 Pro</strong><small>emulator-5554 · Android 16</small></span>
-                <span class="signal" aria-hidden="true"><i></i><i></i><i></i></span>
-              </div>
-              <div class="quick-grid">
-                <div class="quick-item"><span class="qi-icon qi-blue"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 18v2h16v-2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>安装 APK</b></div>
-                <div class="quick-item"><span class="qi-icon qi-purple"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.9"/></svg></span><b>截屏</b></div>
-                <div class="quick-item"><span class="qi-icon qi-green"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20V9m0 0 4 4m-4-4-4 4M5 4h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>传文件</b></div>
-                <div class="quick-item"><span class="qi-icon qi-orange"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3.5 3.5L20 7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>看日志</b></div>
-              </div>
-              <div class="terminal">
-                <div class="terminal-head"><span></span><span></span><span></span><em>adb shell</em></div>
-                <div class="terminal-body"><span class="prompt">$</span> <span id="typed">adb devices</span><span class="caret"></span></div>
+            <div class="app-body">
+              <div class="groups-grid">
+                <fieldset class="group-box mini"><legend>通用分类</legend>
+                  <button type="button" class="win-btn">重启菜单</button>
+                  <button type="button" class="win-btn">命令行</button>
+                </fieldset>
+                <fieldset class="group-box mini"><legend>系统模式</legend>
+                  <button type="button" class="win-btn">已连接设备信息</button>
+                  <button type="button" class="win-btn">安装/卸载软件</button>
+                  <button type="button" class="win-btn">推送文件</button>
+                </fieldset>
+                <fieldset class="group-box mini"><legend>恢复模式</legend>
+                  <button type="button" class="win-btn">Sideload刷机</button>
+                  <button type="button" class="win-btn">推送文件</button>
+                </fieldset>
+                <fieldset class="group-box mini"><legend>Fastboot/d模式</legend>
+                  <button type="button" class="win-btn">刷入镜像</button>
+                  <button type="button" class="win-btn">读取信息</button>
+                </fieldset>
+                <fieldset class="group-box mini"><legend>其他</legend>
+                  <button type="button" class="win-btn">官方网站</button>
+                  <button type="button" class="win-btn">关于工具箱</button>
+                  <button type="button" class="win-btn">安装通用驱动</button>
+                </fieldset>
+                <fieldset class="group-box mini"><legend>已识别设备</legend>
+                  <button type="button" class="win-btn">MIX 2S</button>
+                  <button type="button" class="win-btn">faa72261</button>
+                </fieldset>
               </div>
             </div>
+            <div class="status-bar"><span>就绪</span><span class="status-cmd"><i class="prompt">$</i> <span id="typed">adb devices</span><i class="caret"></i></span></div>
           </div>
-          <div class="float-chip chip-one glass" data-depth="0.3">
-            <span class="chip-dot"></span> 连接成功 <b>0.3s</b>
-          </div>
-          <div class="float-chip chip-two glass" data-depth="0.22">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 无需 root
-          </div>
+          <div class="float-chip" data-depth="0.18"><span class="chip-dot"></span> 窗口风格与软件一致</div>
         </div>
       </div>
-      <a class="scroll-hint" href="#features" aria-label="向下滚动"><span></span>向下探索</a>
     </section>
 
     <!-- 数据条 -->
     <section class="stats-wrap reveal">
-      <div class="stats glass">
-        <div class="stat"><strong>30<span>+</span></strong><small>常用命令一键执行</small></div>
-        <div class="stat"><strong>0</strong><small>广告与冗余功能</small></div>
-        <div class="stat"><strong>1.2</strong><small>当前版本 · Windows 首发</small></div>
-        <div class="stat"><strong>100<span>%</span></strong><small>开源免费</small></div>
-      </div>
+      <fieldset class="group-box stats">
+        <legend>工具箱概览</legend>
+        <div class="stat"><strong>30+</strong><small>常用功能一键执行</small></div>
+        <div class="stat"><strong>6</strong><small>功能分组清晰归类</small></div>
+        <div class="stat"><strong>1</strong><small>Windows 版现已推出</small></div>
+        <div class="stat"><strong>v1.2</strong><small>当前版本</small></div>
+      </fieldset>
     </section>
 
     <!-- 功能 -->
     <section class="section" id="features">
       <div class="section-head reveal">
         <span class="section-kicker">FEATURES / 功能</span>
-        <h2>你需要的，刚好都在</h2>
-        <p>只保留真正高频的操作。没有学习成本，打开就会用。</p>
+        <h2>和软件里一样，按分类找就行</h2>
+        <p>没有隐藏入口，没有学习成本。每个按钮对应一个常用操作。</p>
       </div>
       <div class="feature-grid">
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-blue"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3>一键连接设备</h3>
-          <p>自动发现 USB 与无线设备，点击即连接，状态实时可见。</p>
-          <span class="card-index">01</span>
-        </article>
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-purple"><svg viewBox="0 0 24 24" fill="none"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 4l-4 16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3>命令速查与执行</h3>
-          <p>常用 ADB 命令分类整理，点一下就运行，还能保存自己的常用指令。</p>
-          <span class="card-index">02</span>
-        </article>
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-green"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 15h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3>应用管理</h3>
-          <p>批量安装、卸载、禁用与启动应用，APK 拖进去就能装。</p>
-          <span class="card-index">03</span>
-        </article>
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-orange"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 6 9.5 3h5L16 6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg></span>
-          <h3>截图与录屏</h3>
-          <p>一键截取屏幕、录制操作过程，自动保存到指定目录。</p>
-          <span class="card-index">04</span>
-        </article>
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-pink"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L8 8m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3>文件双向传输</h3>
-          <p>电脑与手机之间拖拽传文件，进度清晰，速度看得见。</p>
-          <span class="card-index">05</span>
-        </article>
-        <article class="feature-card glass reveal">
-          <span class="feature-icon fi-teal"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3.5 3.5L20 7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3>实时日志查看</h3>
-          <p>过滤、搜索、高亮 logcat，定位问题不用再靠肉眼扫屏。</p>
-          <span class="card-index">06</span>
-        </article>
+        <fieldset class="group-box feature-card reveal"><legend>通用分类</legend>
+          <div class="win-btn flat">重启菜单</div>
+          <div class="win-btn flat">命令行</div>
+          <p class="feature-note">进 Recovery / Fastboot 不用再记组合键。</p>
+        </fieldset>
+        <fieldset class="group-box feature-card reveal"><legend>系统模式</legend>
+          <div class="win-btn flat">已连接设备信息</div>
+          <div class="win-btn flat">安装/卸载软件</div>
+          <div class="win-btn flat">推送文件</div>
+          <p class="feature-note">连接状态、应用管理、文件传输都在这里。</p>
+        </fieldset>
+        <fieldset class="group-box feature-card reveal"><legend>恢复模式</legend>
+          <div class="win-btn flat">Sideload刷机</div>
+          <div class="win-btn flat">推送文件</div>
+          <p class="feature-note">卡刷与临时传输，按步骤点选即可。</p>
+        </fieldset>
+        <fieldset class="group-box feature-card reveal"><legend>Fastboot/d模式</legend>
+          <div class="win-btn flat">刷入镜像</div>
+          <div class="win-btn flat">读取信息</div>
+          <p class="feature-note">刷写镜像、读取设备状态，一步到位。</p>
+        </fieldset>
+        <fieldset class="group-box feature-card reveal"><legend>其他</legend>
+          <div class="win-btn flat">官方网站</div>
+          <div class="win-btn flat">关于工具箱</div>
+          <div class="win-btn flat">安装通用驱动</div>
+          <p class="feature-note">驱动、说明与官网入口集中摆放。</p>
+        </fieldset>
+        <fieldset class="group-box feature-card reveal"><legend>设备列表</legend>
+          <div class="win-btn flat">MIX 2S</div>
+          <div class="win-btn flat">faa72261</div>
+          <p class="feature-note">常见机型快捷入口，连接后自动识别。</p>
+        </fieldset>
       </div>
     </section>
 
-    <!-- 体验 -->
+    <!-- 界面预览 -->
     <section class="section showcase-section" id="workflow">
-      <div class="showcase glass reveal">
+      <fieldset class="group-box showcase reveal">
+        <legend>界面预览</legend>
         <div class="showcase-copy">
-          <span class="section-kicker">WHY IT FEELS GOOD</span>
-          <h2>三步，搞定以前<br>要查半天的事</h2>
-          <p>不需要记命令，不需要配环境。工具箱把 ADB 该有的能力收进一个干净界面，你只管点击。</p>
+          <span class="section-kicker">SCREENSHOT / 真实界面</span>
+          <h2>就是这个窗口，<br>和你想的一样简单</h2>
+          <p>网站现在与软件保持一致：分组框、灰色按钮、经典标题栏。打开软件后，你会立刻认出每一个入口。</p>
           <ol class="steps">
-            <li><span>1</span><div><b>连接</b><small>插上数据线，或输入 IP 无线连接</small></div></li>
-            <li><span>2</span><div><b>选择</b><small>从卡片里挑一个你要做的操作</small></div></li>
-            <li><span>3</span><div><b>完成</b><small>结果即时反馈，无需等待与切换窗口</small></div></li>
+            <li><span>1</span><div><b>连接设备</b><small>插上数据线，或在系统模式查看设备信息</small></div></li>
+            <li><span>2</span><div><b>选择分组</b><small>通用、恢复、Fastboot 等功能分类清晰</small></div></li>
+            <li><span>3</span><div><b>点击按钮</b><small>命令自动执行，无需手写 ADB 指令</small></div></li>
           </ol>
         </div>
-        <div class="showcase-visual" data-parallax="0.07">
-          <div class="code-card glass">
-            <div class="code-head"><span></span><span></span><span></span><em>terminal</em></div>
-            <pre><code><span class="c-dim"># 以前</span>
-adb devices
-adb install -r app.apk
-adb shell pm clear com.demo
-adb logcat | grep ERROR
-
-<span class="c-dim"># 现在</span>
-<span class="c-key">点击「安装 APK」</span>
-<span class="c-key">点击「清除数据」</span>
-<span class="c-key">点击「只看错误日志」</span></code></pre>
+        <div class="showcase-visual" data-parallax="0.06">
+          <div class="screenshot-frame">
+            <div class="title-bar"><span class="title-text">极简ADB工具箱 — 界面截图</span><span class="window-controls" aria-hidden="true"><i>—</i><i>□</i><i class="close">×</i></span></div>
+            <img src="assets/img/app-screenshot.png" alt="极简 ADB 工具箱软件界面截图，展示通用分类、系统模式、恢复模式、Fastboot 模式等按钮分组" loading="lazy">
           </div>
-          <div class="badge-float glass" data-depth="0.18"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.9"/></svg> 少记 30 条命令</div>
         </div>
-      </div>
+      </fieldset>
     </section>
 
     <!-- 下载 -->
     <section class="section download-section" id="download">
       <div class="section-head reveal">
         <span class="section-kicker">DOWNLOAD / 下载</span>
-        <h2>现在就试试看</h2>
-        <p>Windows 版 v1.2.0 已就绪，文件直接来自 GitHub，点击即可下载。</p>
+        <h2>下载 Windows 版</h2>
+        <p>文件托管在 GitHub，可选国内镜像加速，也可以切回官方原链接。</p>
       </div>
-      <div class="download-card glass reveal">
+      <fieldset class="group-box download-card reveal">
+        <legend>下载 v1.2.0</legend>
         <div class="download-info">
           <span class="version-pill">最新版本 v1.2.0</span>
-          <h3>极简 ADB 工具箱</h3>
-          <p>Windows 版已内置 ADB 环境，无需额外配置。下载压缩包后解压运行即可使用。</p>
-          <div class="download-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5m0-8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>开源免费 · 无广告 · 无捆绑</span></div>
+          <h3>极简 ADB 工具箱 · Windows 版</h3>
+          <p>压缩包 27.6 MB，内置 ADB 环境与通用驱动安装入口。下载后解压运行即可使用。</p>
+          <div class="download-note">免费 · 无广告 · 无捆绑</div>
         </div>
         <div class="download-options">
-          <div class="source-picker glass">
-            <span class="source-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 0c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21m0-18c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9M3.4 9h17.2M3.4 15h17.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-            <span class="source-text"><b>下载线路</b><small id="sourceStatus">当前：国内镜像 ghfast.top</small></span>
+          <div class="source-picker">
+            <span class="source-label">下载线路</span>
             <span class="select-wrap">
               <select id="mirrorSelect" aria-label="选择下载线路">
                 <option value="https://ghfast.top/" selected>国内镜像 · ghfast.top</option>
@@ -221,29 +209,20 @@ adb logcat | grep ERROR
               </select>
               <svg class="select-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
+            <small id="sourceStatus">当前：国内镜像 ghfast.top</small>
           </div>
-          <a class="platform" data-file="ADB-Toolbox-Windows-v1.2.0.rar" href="#" download>
-            <span class="platform-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.6 10.5 4.6v6.9H3V5.6Zm0 7.9h7.5v6.9L3 19.5v-6Zm8.5-9.1L21 3v9.1h-9.5V4.4Zm0 10.1H21V21l-9.5-1.4v-6.1Z"/></svg></span>
-            <span class="platform-text"><b>Windows 版</b><small>.rar · 27.6 MB · 适用于 Windows 10/11</small></span>
-            <span class="platform-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-          <a class="platform platform-source" href="https://github.com/JaneAwA/JaneAwA.github.io/releases" target="_blank" rel="noopener">
-            <span class="platform-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
-            <span class="platform-text"><b>查看版本记录</b><small>GitHub Releases · 更新说明</small></span>
-            <span class="platform-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7m0 0H8m9 0v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
+          <a class="win-btn primary big" data-file="ADB-Toolbox-Windows-v1.2.0.rar" href="#" download>下载 Windows 版（.rar · 27.6 MB）</a>
+          <a class="win-btn" href="https://github.com/JaneAwA/JaneAwA.github.io/releases" target="_blank" rel="noopener">查看 GitHub Releases 更新记录</a>
+          <p class="download-hint">镜像站为第三方中转，下载异常时请切换回 GitHub 原链接。</p>
         </div>
-      </div>
-      <p class="download-hint reveal">目前仅提供 Windows 版本 · v1.2.0 · 27.6 MB。镜像站为第三方加速服务，仅做中转；下载异常时请切换回 GitHub 原链接。</p>
+      </fieldset>
     </section>
   </main>
 
-  <footer class="footer glass">
-    <div class="footer-inner">
-      <span class="footer-brand"><span class="brand-mark small" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V7h3.2v10H5Zm5.4 0V4.5h3.2V17h-3.2ZM16 17v-6h3.2v6H16Z" fill="currentColor"/></svg></span> 极简 ADB 工具箱</span>
-      <span class="footer-note">Designed with care by JaneAwA · 2026</span>
-      <a href="https://github.com/JaneAwA" target="_blank" rel="noopener">GitHub</a>
-    </div>
+  <footer class="status-footer">
+    <span>就绪</span>
+    <span>极简 ADB 工具箱 · Windows 版 v1.2.0</span>
+    <a href="https://github.com/JaneAwA" target="_blank" rel="noopener">GitHub: JaneAwA</a>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
