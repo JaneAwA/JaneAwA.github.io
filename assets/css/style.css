@@ -134,14 +134,15 @@ button, select { font-family: var(--font); font-size: 12px; }
 /* ---------- 步骤 ---------- */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .steps li { display: flex; gap: 8px; align-items: flex-start; }
-.steps li > b {
+.steps li > .step-num {
   flex: 0 0 20px; height: 20px; display: grid; place-items: center;
   background: var(--face); border: 1px solid; border-color: var(--white) var(--dark) var(--dark) var(--white);
   box-shadow: inset 1px 1px 0 var(--face-light), inset -1px -1px 0 var(--shadow);
   font-size: 11px;
 }
-.steps b:not(:first-child) { font-size: 12px; }
-.steps li > span { display: block; font-size: 11px; color: #303030; }
+.step-body { min-width: 0; }
+.step-body > b { display: block; font-size: 12px; margin-bottom: 3px; }
+.step-body > span { display: block; font-size: 11px; color: #303030; }
 
 /* ---------- 下载 ---------- */
 .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
