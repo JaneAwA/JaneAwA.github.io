@@ -37,14 +37,47 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
   }
 
-  $$('[data-file]').forEach((link) => {
-    const file = link.getAttribute('data-file');
-    link.href = downloadURL(file);
+  const mirrorSelect = $('#mirrorSelect');
+  const sourceStatus = $('#sourceStatus');
+  const STORAGE_KEY = 'adb-toolbox-download-route';
+  const downloadLinks = $$('[data-file]');
 
-    // 检测文件是否已上传：未上传时给出友好提示，而不是跳到 404 页面
+  function routeLabel(prefix) {
+    if (!prefix) return 'GitHub 官方原链接';
+    const option = mirrorSelect && Array.from(mirrorSelect.options).find((o) => o.value === prefix);
+    return option ? option.textContent.replace('国内镜像 · ', '国内镜像 ') : prefix;
+  }
+
+  // 按所选线路拼接下载链接，并记住用户选择
+  function applyRoute(showToast) {
+    if (!mirrorSelect) return;
+    const prefix = mirrorSelect.value;
+    downloadLinks.forEach((link) => {
+      link.href = prefix + (link.dataset.origin || '');
+    });
+    if (sourceStatus) sourceStatus.textContent = '当前：' + routeLabel(prefix);
+    try { localStorage.setItem(STORAGE_KEY, prefix); } catch (e) { /* 隐私模式下忽略 */ }
+    if (showToast) toast('已切换至 ' + routeLabel(prefix));
+  }
+
+  if (mirrorSelect) {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved !== null && Array.from(mirrorSelect.options).some((o) => o.value === saved)) {
+        mirrorSelect.value = saved;
+      }
+    } catch (e) { /* 隐私模式下忽略 */ }
+    mirrorSelect.addEventListener('change', () => applyRoute(true));
+  }
+
+  downloadLinks.forEach((link) => {
+    const file = link.getAttribute('data-file');
+    link.dataset.origin = downloadURL(file);
+
+    // 始终用官方原链接检测文件有效性，避免镜像站跨域影响判断
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 6000);
-    fetch(link.href, { method: 'HEAD', signal: controller.signal, cache: 'no-store' })
+    fetch(link.dataset.origin, { method: 'HEAD', signal: controller.signal, cache: 'no-store' })
       .then((res) => {
         clearTimeout(timeout);
         if (!res.ok) link.dataset.state = 'missing';
@@ -61,6 +94,8 @@
       }
     });
   });
+
+  applyRoute(false);
 
   /* ---------- 入场动画 ---------- */
   const revealItems = $$('.reveal');

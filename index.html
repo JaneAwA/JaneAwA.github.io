@@ -210,6 +210,18 @@ adb logcat | grep ERROR
           <div class="download-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5m0-8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>开源免费 · 无广告 · 无捆绑</span></div>
         </div>
         <div class="download-options">
+          <div class="source-picker glass">
+            <span class="source-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 0c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21m0-18c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9M3.4 9h17.2M3.4 15h17.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <span class="source-text"><b>下载线路</b><small id="sourceStatus">当前：国内镜像 ghfast.top</small></span>
+            <span class="select-wrap">
+              <select id="mirrorSelect" aria-label="选择下载线路">
+                <option value="https://ghfast.top/" selected>国内镜像 · ghfast.top</option>
+                <option value="https://gh-proxy.com/">国内镜像 · gh-proxy.com</option>
+                <option value="">GitHub 原链接（官方）</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
           <a class="platform" data-file="ADB-Toolbox-Windows-v1.2.0.rar" href="#" download>
             <span class="platform-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.6 10.5 4.6v6.9H3V5.6Zm0 7.9h7.5v6.9L3 19.5v-6Zm8.5-9.1L21 3v9.1h-9.5V4.4Zm0 10.1H21V21l-9.5-1.4v-6.1Z"/></svg></span>
             <span class="platform-text"><b>Windows 版</b><small>.rar · 27.6 MB · 适用于 Windows 10/11</small></span>
@@ -222,7 +234,7 @@ adb logcat | grep ERROR
           </a>
         </div>
       </div>
-      <p class="download-hint reveal">目前仅提供 Windows 版本 · v1.2.0 · 27.6 MB，文件托管于 GitHub Releases。</p>
+      <p class="download-hint reveal">目前仅提供 Windows 版本 · v1.2.0 · 27.6 MB。镜像站为第三方加速服务，仅做中转；下载异常时请切换回 GitHub 原链接。</p>
     </section>
   </main>
 
